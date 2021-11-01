@@ -7,14 +7,24 @@ PowerShell script to deploy a single SQL Server instance. Uses some dynamic para
 3. Invoke-Sqlcmd is used to execute SQL Scripts. Script contains a check to review if the function is available, if not it will do a fallback to the _Tools\sqlserver_ folder. See paragraph Invoke-Sqlcmd for additional notes. 
 
 # Folder and content requirements
-Folder and file structure needs to be followed. Expects the following folder structure within a folder (sourcedirectory):
-* [Version] - Distinct SQL Server Version for example 2012 or 2019. This folder needs the following content for each Version-folder.
-  * _ConfigurationFile-MSQ-$sqlenvironment-$sqlversion.ini_ - For example: ConfigurationFile-MSQ-DEV-2019.ini
-  * _Configure-SqlServer$sqlversion-$sqlenvironment-Base.sql_ - For example: Configure-SqlServer2019-DEV-Base.sql
-  * _SQLServerInstallationImage.iso_ - For example: SQLServer2019-x64-ENU-Dev.iso
-* [Tools] - SQL Server Management Studio setup and or SqlServer PowerShell module content in sqlserver-folder.
-* [Functions] - Contains helper functions for the installation script: Get-IniContent.ps1 and Install-HelperFunctions.ps1. 
-* [Root of the folder] - Will contain Install-SqlServer-Base.ps1 file and log-files will be written into this folder. 
+Folder and file structure needs to be followed. Expects the following folder structure within a folder:
+* `[Source]` - Folder containing setup, ini and sql-scripts.
+  * `[Version]` - Distinct SQL Server Version for example 2012 or 2019. This folder needs the following content for each Version-folder.
+    * _ConfigurationFile-MSQ-$sqlenvironment-$sqlversion.ini_ - For example: ConfigurationFile-MSQ-DEV-2019.ini
+    * _Configure-SqlServer$sqlversion-$sqlenvironment-Base.sql_ - For example: Configure-SqlServer2019-DEV-Base.sql
+    * _SQLServerInstallationImage.iso_ - For example: SQLServer2019-x64-ENU-Dev.iso
+  * `[Tools] `- SQL Server Management Studio setup and or SqlServer PowerShell module content in sqlserver-folder.
+* `[Functions]` - Contains helper functions for the installation script: Get-IniContent.ps1 and Install-HelperFunctions.ps1. 
+* `[Root of the folder]` - Will contain Install-SqlServer-Base.ps1 file and log-files will be written into this folder.
+
+_Sample folder structure:_  
+[Parent]  
+|- [Source]  
+|-- [2016]  
+|-- [2019]  
+|-- [Tools]  
+|- [Functions]  
+\\- Install-SqlServer-Base.ps1  
 
 # Options to get Invoke-Sqlcmd working
 Online install: Install-Package -module sqlserver
