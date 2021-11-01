@@ -32,3 +32,8 @@ Options to use offline - [Download .nupkg from a Microsoft source](https://docs.
 1. Install using Nuget offline procedures. For example: https://nmanzi.com/blog/installing-nupkg-offline/
 2. Without installation: Rename the .nupkg to .zip, copy the module to the PowerShell modules directory and load it with Import-Module. For example: https://docs.datprof.com/knowledgebase/how-to-install-microsoft-powershell-sqlserver-module
 3. _Script will fallback to this option._ Without installation: rename the .nupkg to .zip and extract the content the TOOLS directory in a directory name _sqlservermodule_
+
+# Todo
+1. Add SQL Server Update slipstream folder as parameter to the script. 
+2. Proper naming conventions and module creation.
+3. Add additional logic to do remote installation (rely on [dbatools](https://dbatools.io/) using [Install-DbaInstance](https://docs.dbatools.io/Install-DbaInstance) or write own logic?)
